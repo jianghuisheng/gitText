@@ -1,0 +1,68 @@
+git init 把创建的空目录变成git可以管理的仓库
+当前目录下多了一个.git的目录（隐藏目录 ls -ah命令就可以看见）
+
+ 设置本地计算机的用户名和邮箱
+ git config --global user.name "name"
+ git config --global user.email 'email'
+
+ 查看配置的全局变量
+  git config --list
+
+1.编写一个readme.txt 文件
+
+2.把文件放到仓库
+git add file(那文件添加到仓库)实际上是添加至暂存区     git add *所有文件    git add ./dir文件夹
+git commit -m"第一个版本"（把文件提交到仓库）暂存区的所有内容提交到当前的分支，只负责把暂存区的修改提交了‘-m’后面输入的是本次提交的说明，可以输入任意内容，
+
+3.git status 	查看仓库当前状态
+
+4.git diff (file)	   查看修改的内容
+
+5.修改后，确认内容,提交 git add file   git status   git commit -m"第二版本修改"  提交后可以再次查看状态 git status
+
+git log 查看提交的日志
+
+版本回退：git reset --hard 版本号（前几位就行）  记住这个就好!!!
+
+管理修改：第一次修改 -> git add -> 第二次修改 -> git add -> git commit --m"第几个版本的修改"
+
+撤销修改：git add到暂存区，但是没有commit   git reset HEAD file 把暂存区的修改撤销掉，重新放回工作区 git status 查看一下暂存区是否干净
+	git add到暂存区，并且commit    git reset HEAD file 把修改撤销掉，重新执行恢复命令:git checkout file
+
+删除文件: git rm <file>删除文件   git status查看那个文件被删除  git commit -m"删除文件" 提交删除的命令
+	手动删除文件，和使用git rm <file>效果一样
+	删错了:用  git checkout file  命令还原
+
+
+
+
+git push从本地到远程
+$ git remote add origin git@github.com:michaelliao/learngit.git
+git push -u origin master
+
+报错去根目录找.ssh删除
+
+
+git pull 从远程拉出
+$ git clone https://github.com/jianghuisheng/text.git
+
+
+分支:
+	查看分支:git branch
+	创建并切换: git checkout -b dev
+	创建分支:git branch dev
+	切换分支:git chekout dev
+	切换分支后修改文件,提交命令相同,分支工作完成就能切换到master主分支了(文件变回切换分支修改前的样子);
+	合并分支:git merge dev
+	合并完成分支,内容跟着合并
+	删除分支:git branch -d dev
+
+
+查看远程库信息:  git remote -v
+
+推送分支:git push origin master
+推送其他分支: git push origin dev
+
+
+
+
